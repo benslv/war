@@ -1,10 +1,3 @@
-import Deck from "./Deck";
+import { Game } from "./Game";
 
-
-// Create one unshuffled deck.
-const deck1 = new Deck();
-console.log(deck1);
-
-// Create one shuffled deck.
-const deck2 = new Deck(true);
-console.log(deck2);
+const game = new Game();
