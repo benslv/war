@@ -1,4 +1,4 @@
-export interface Card {
+export type Card = {
 	suit: string;
 	value: string;
 }
