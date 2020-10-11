@@ -51,7 +51,27 @@ export default class Deck {
 	}
 }
 
-interface Card {
-	suit: string;
-	value: string;
+	// Utility method for comparing two cards.
+	// Returns 0 if equal, 1 if player 1's card is higher, -1 if player 2's card is higher.
+	static compare(p1: Card, p2: Card): number {
+		const values: object = {
+			"2": 2,
+			"3": 3,
+			"4": 4,
+			"5": 5,
+			"6": 6,
+			"7": 7,
+			"8": 8,
+			"9": 9,
+			"10": 10,
+			Jack: 11,
+			Queen: 12,
+			King: 13,
+			Ace: 14,
+		};
+
+		if (values[p1.value] === values[p2.value]) return 0;
+
+		return values[p1.value] > values[p2.value] ? 1 : -1;
+	}
 }
