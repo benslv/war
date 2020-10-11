@@ -1,0 +1,11 @@
+{
+  "name": "war",
+  "version": "1.0.0",
+  "description": "A TS implementation/simulation of the two-player card game, War.",
+  "main": "index.js",
+  "author": "Ben Silverman <bensilverman10@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^4.0.3"
+  }
+}
