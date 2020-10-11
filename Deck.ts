@@ -1,7 +1,7 @@
 import { Card } from "./Card.model";
 
 export class Deck {
-	deck: { suit: string; value: string }[];
+	deck: Card[];
 
 	// Constructor for the deck, with option to immediately shuffle it after creation.
 	constructor(shuffle: boolean = false) {
@@ -53,7 +53,7 @@ export class Deck {
 	}
 
 	// Returns this.deck (an array of objects) when called.
-	get(): { suit: string; value: string }[] {
+	get(): Card[] {
 		return this.deck;
 	}
 
