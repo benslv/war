@@ -1,8 +1,10 @@
-export default class Deck {
-	deck: { suit: string; value: string | number }[];
+import { Card } from "./Card.model";
+
+export class Deck {
+	deck: { suit: string; value: string }[];
 
 	// Constructor for the deck, with option to immediately shuffle it after creation.
-	constructor(shuffle: boolean=false) {
+	constructor(shuffle: boolean = false) {
 		this.deck = [];
 
 		const suits: string[] = ["Hearts", "Spades", "Clubs", "Diamonds"];
@@ -25,7 +27,7 @@ export default class Deck {
 		// Generate all the possible combinations of card type.
 		for (let suit of suits) {
 			for (let value of values) {
-				// Contruct a card object according to the Card interface.
+				// Construct a card object according to the Card interface.
 				const card: Card = {
 					suit: suit,
 					value: value,
@@ -49,7 +51,11 @@ export default class Deck {
 			[this.deck[i], this.deck[ri]] = [this.deck[ri], this.deck[i]];
 		}
 	}
-}
+
+	// Returns this.deck (an array of objects) when called.
+	get(): { suit: string; value: string }[] {
+		return this.deck;
+	}
 
 	// Utility method for comparing two cards.
 	// Returns 0 if equal, 1 if player 1's card is higher, -1 if player 2's card is higher.
