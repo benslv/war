@@ -22,8 +22,8 @@ export class Game {
 		const outcome: number = Deck.compare(p1Card, p2Card);
 
 		switch (outcome) {
-            case 0: // Cards are equal.
-                console.log(`WAR!!! Both players played: ${p1Card.value}`);
+			case 0: // Cards are equal.
+				console.log(`WAR!!! Both players played: ${p1Card.value}`);
 				this.war();
 				break;
 			case 1: // Player 1 wins.
@@ -40,9 +40,7 @@ export class Game {
 					`Player 2 won, with ${p2Card.suit}-${p2Card.value} against ${p1Card.suit}-${p1Card.value}`,
 				);
 				break;
-        }
-        
-        return;
+		}
 	}
 
 	war(): void {
@@ -66,6 +64,8 @@ export class Game {
 				p2FaceDown.unshift(this.p2Deck.shift());
 				p2FaceUp.unshift(this.p2Deck.shift());
 			}
+
+			console.log(p1FaceDown, p1FaceUp, p2FaceDown, p2FaceUp);
 		}
 
 		switch (outcome) {
@@ -87,9 +87,9 @@ export class Game {
 					...p1FaceDown,
 				];
 				break;
-        }
-        
-        return;
+		}
+
+		console.log(this.p1Deck, this.p2Deck);
 	}
 
 	hasWinner(): boolean {
