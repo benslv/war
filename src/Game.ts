@@ -76,12 +76,26 @@ export class Game {
 		switch (outcome) {
 			case 1: // Player 1 wins.
 				// Add all the cards from each players' face up and face down piles to Player 1's deck.
-				this.p1Deck.push(p1Card, p2Card, ...p1FaceUp, ...p1FaceDown, ...p2FaceUp, ...p2FaceDown);
+				this.p1Deck.push(
+					p1Card,
+					p2Card,
+					...p1FaceUp,
+					...p1FaceDown,
+					...p2FaceUp,
+					...p2FaceDown,
+				);
 				// console.log("Pushed cards to Player 1's deck.");
 				break;
 			case -1: // Player 2 wins.
 				// Add all the cards from each players' face up and face down piles to Player 2's deck.
-				this.p2Deck.push(p2Card, p1Card, ...p2FaceUp, ...p2FaceDown, ...p1FaceUp, ...p1FaceDown);
+				this.p2Deck.push(
+					p2Card,
+					p1Card,
+					...p2FaceUp,
+					...p2FaceDown,
+					...p1FaceUp,
+					...p1FaceDown,
+				);
 				// console.log("Pushed cards to Player 2's deck.");
 				break;
 		}
