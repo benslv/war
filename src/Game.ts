@@ -47,9 +47,11 @@ export class Game {
 	}
 
 	war(): void {
-		let outcome: number;
-		let winner: boolean = false;
+		let outcome: number; // Outcome determining which player won (1: Player 1, -1: Player 2, 0: Draw).
+		let winner: boolean = false; // Set to true when outcome is non-zero.
 
+		// Face up and face down "piles" for each of the two players.
+		// Initialised with a card from the top of each of their decks.
 		let p1FaceDown: Card[] = [this.p1Deck.shift()];
 		let p1FaceUp: Card[] = [this.p1Deck.shift()];
 
@@ -57,11 +59,13 @@ export class Game {
 		let p2FaceUp: Card[] = [this.p2Deck.shift()];
 
 		while (!winner) {
+			// Compare the two face up cards on the table.
 			outcome = Deck.compare(p1FaceUp[0], p2FaceUp[0]);
 
 			if (outcome !== 0) {
 				winner = true;
 			} else {
+				// If no winner is found, add a new card face up and face down in each of the players' spaces.
 				p1FaceDown.unshift(this.p1Deck.shift());
 				p1FaceUp.unshift(this.p1Deck.shift());
 				p2FaceDown.unshift(this.p2Deck.shift());
@@ -71,9 +75,11 @@ export class Game {
 
 		switch (outcome) {
 			case 1: // Player 1 wins.
+				// Add all the cards from each players' face up and face down piles to Player 1's deck.
 				this.p1Deck.push(...p1FaceUp, ...p1FaceDown, ...p2FaceUp, ...p2FaceDown);
 				break;
 			case -1: // Player 2 wins.
+				// Add all the cards from each players' face up and face down piles to Player 2's deck.
 				this.p2Deck.push(...p2FaceUp, ...p2FaceDown, ...p1FaceUp, ...p1FaceDown);
 				break;
 		}
