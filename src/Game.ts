@@ -27,7 +27,7 @@ export class Game {
 			case 0: // Cards are equal.
 				// console.log(`WAR!!! Both players played: ${p1Card.value}`);
 				// this.war();
-				this.war();
+				this.war(p1Card, p2Card);
 				break;
 			case 1: // Player 1 wins.
 				this.p1Deck.push(p1Card);
@@ -46,7 +46,7 @@ export class Game {
 		}
 	}
 
-	war(): void {
+	war(p1Card: Card, p2Card: Card): void {
 		let outcome: number; // Outcome determining which player won (1: Player 1, -1: Player 2, 0: Draw).
 		let winner: boolean = false; // Set to true when outcome is non-zero.
 
@@ -76,15 +76,15 @@ export class Game {
 		switch (outcome) {
 			case 1: // Player 1 wins.
 				// Add all the cards from each players' face up and face down piles to Player 1's deck.
-				this.p1Deck.push(...p1FaceUp, ...p1FaceDown, ...p2FaceUp, ...p2FaceDown);
+				this.p1Deck.push(p1Card, p2Card, ...p1FaceUp, ...p1FaceDown, ...p2FaceUp, ...p2FaceDown);
+				// console.log("Pushed cards to Player 1's deck.");
 				break;
 			case -1: // Player 2 wins.
 				// Add all the cards from each players' face up and face down piles to Player 2's deck.
-				this.p2Deck.push(...p2FaceUp, ...p2FaceDown, ...p1FaceUp, ...p1FaceDown);
+				this.p2Deck.push(p2Card, p1Card, ...p2FaceUp, ...p2FaceDown, ...p1FaceUp, ...p1FaceDown);
+				// console.log("Pushed cards to Player 2's deck.");
 				break;
 		}
-
-		console.log(this.p1Deck, this.p2Deck);
 	}
 
 	hasWinner(): boolean {
