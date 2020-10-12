@@ -66,10 +66,23 @@ export class Game {
 				winner = true;
 			} else {
 				// If no winner is found, add a new card face up and face down in each of the players' spaces.
-				p1FaceDown.unshift(this.p1Deck.shift());
-				p1FaceUp.unshift(this.p1Deck.shift());
-				p2FaceDown.unshift(this.p2Deck.shift());
-				p2FaceUp.unshift(this.p2Deck.shift());
+				// Each player is checked to see if they have at least two cards remaining in their deck.
+				// If not, they'll lose the war, and subsequently the entire game.
+				if (this.p1Deck.length >= 2) {
+					p1FaceDown.unshift(this.p1Deck.shift());
+					p1FaceUp.unshift(this.p1Deck.shift());
+				} else {
+					outcome = -1;
+					break;
+				}
+
+				if (this.p2Deck.length >= 2) {
+					p2FaceDown.unshift(this.p2Deck.shift());
+					p2FaceUp.unshift(this.p2Deck.shift());
+				} else {
+					outcome = 1;
+					break;
+				}
 			}
 		}
 
