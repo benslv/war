@@ -27,8 +27,7 @@ export class Game {
 			case 0: // Cards are equal.
 				// console.log(`WAR!!! Both players played: ${p1Card.value}`);
 				// this.war();
-				this.p1Deck.push(p1Card);
-				this.p2Deck.push(p2Card);
+				this.war();
 				break;
 			case 1: // Player 1 wins.
 				this.p1Deck.push(p1Card);
