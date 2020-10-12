@@ -21,24 +21,26 @@ export class Game {
 		// Remove the top card from each players' decks and compare them.
 		const outcome: number = Deck.compare(p1Card, p2Card);
 
+		console.log(`Player 1: ${p1Card.value}\nPlayer 2: ${p2Card.value}`);
+
 		switch (outcome) {
 			case 0: // Cards are equal.
-				console.log(`WAR!!! Both players played: ${p1Card.value}`);
+				// console.log(`WAR!!! Both players played: ${p1Card.value}`);
 				this.war();
 				break;
 			case 1: // Player 1 wins.
 				this.p1Deck.push(p1Card);
 				this.p1Deck.push(p2Card);
-				console.log(
-					`Player 1 won, with ${p1Card.suit}-${p1Card.value} against ${p2Card.suit}-${p2Card.value}`,
-				);
+				// console.log(
+				// 	`Player 1 won, with ${p1Card.suit}-${p1Card.value} against ${p2Card.suit}-${p2Card.value}`,
+				// );
 				break;
 			case -1: // Player 2 wins.
 				this.p2Deck.push(p2Card);
 				this.p2Deck.push(p1Card);
-				console.log(
-					`Player 2 won, with ${p2Card.suit}-${p2Card.value} against ${p1Card.suit}-${p1Card.value}`,
-				);
+				// console.log(
+				// 	`Player 2 won, with ${p2Card.suit}-${p2Card.value} against ${p1Card.suit}-${p1Card.value}`,
+				// );
 				break;
 		}
 	}
@@ -64,28 +66,14 @@ export class Game {
 				p2FaceDown.unshift(this.p2Deck.shift());
 				p2FaceUp.unshift(this.p2Deck.shift());
 			}
-
-			console.log(p1FaceDown, p1FaceUp, p2FaceDown, p2FaceUp);
 		}
 
 		switch (outcome) {
 			case 1: // Player 1 wins.
-				this.p1Deck = [
-					...this.p1Deck,
-					...p1FaceUp,
-					...p1FaceDown,
-					...p2FaceUp,
-					...p2FaceDown,
-				];
+				this.p1Deck.push(...p1FaceUp, ...p1FaceDown, ...p2FaceUp, ...p2FaceDown);
 				break;
 			case -1: // Player 2 wins.
-				this.p2Deck = [
-					...this.p2Deck,
-					...p2FaceUp,
-					...p2FaceDown,
-					...p1FaceUp,
-					...p1FaceDown,
-				];
+				this.p2Deck.push(...p2FaceUp, ...p2FaceDown, ...p1FaceUp, ...p1FaceDown);
 				break;
 		}
 
