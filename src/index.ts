@@ -4,13 +4,13 @@ const game = new Game();
 
 let i = 0;
 
-console.log("Game has started!")
+console.log("Game has started!");
 
 while (!game.hasWinner()) {
 	game.playRound();
-	game.printDeckSize();
+	// game.printDeckSize();
 
-	i += 1
+	i += 1;
 }
 
 console.log(`Winner after ${i} rounds.`);
