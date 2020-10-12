@@ -21,27 +21,17 @@ export class Game {
 		// Remove the top card from each players' decks and compare them.
 		const outcome: number = Deck.compare(p1Card, p2Card);
 
-		// console.log(`Player 1: ${p1Card.value}\nPlayer 2: ${p2Card.value}`);
-
 		switch (outcome) {
 			case 0: // Cards are equal.
-				// console.log(`WAR!!! Both players played: ${p1Card.value}`);
-				// this.war();
 				this.war(p1Card, p2Card);
 				break;
 			case 1: // Player 1 wins.
 				this.p1Deck.push(p1Card);
 				this.p1Deck.push(p2Card);
-				// console.log(
-				// 	`Player 1 won, with ${p1Card.suit}-${p1Card.value} against ${p2Card.suit}-${p2Card.value}`,
-				// );
 				break;
 			case -1: // Player 2 wins.
 				this.p2Deck.push(p2Card);
 				this.p2Deck.push(p1Card);
-				// console.log(
-				// 	`Player 2 won, with ${p2Card.suit}-${p2Card.value} against ${p1Card.suit}-${p1Card.value}`,
-				// );
 				break;
 		}
 	}
@@ -97,7 +87,6 @@ export class Game {
 					...p2FaceUp,
 					...p2FaceDown,
 				);
-				// console.log("Pushed cards to Player 1's deck.");
 				break;
 			case -1: // Player 2 wins.
 				// Add all the cards from each players' face up and face down piles to Player 2's deck.
@@ -109,7 +98,6 @@ export class Game {
 					...p1FaceUp,
 					...p1FaceDown,
 				);
-				// console.log("Pushed cards to Player 2's deck.");
 				break;
 		}
 	}

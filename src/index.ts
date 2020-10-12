@@ -8,8 +8,6 @@ console.log("Game has started!");
 
 while (!game.hasWinner()) {
 	game.playRound();
-	// game.printDeckSize();
-
 	i += 1;
 }
 
