@@ -21,12 +21,14 @@ export class Game {
 		// Remove the top card from each players' decks and compare them.
 		const outcome: number = Deck.compare(p1Card, p2Card);
 
-		console.log(`Player 1: ${p1Card.value}\nPlayer 2: ${p2Card.value}`);
+		// console.log(`Player 1: ${p1Card.value}\nPlayer 2: ${p2Card.value}`);
 
 		switch (outcome) {
 			case 0: // Cards are equal.
 				// console.log(`WAR!!! Both players played: ${p1Card.value}`);
-				this.war();
+				// this.war();
+				this.p1Deck.push(p1Card);
+				this.p2Deck.push(p2Card);
 				break;
 			case 1: // Player 1 wins.
 				this.p1Deck.push(p1Card);
